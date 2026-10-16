@@ -1,0 +1,24 @@
+{
+  "kind": "custom_token",
+  "token": {
+    "contract": "SwarmCore",
+    "name": "SwarmCore",
+    "symbol": "SWARMCOR",
+    "decimals": 18,
+    "constructorArgs": [],
+    "totalSupply": "1000000000000000000000000000"
+  },
+  "contracts": [],
+  "pool": {
+    "pairedCurrency": "0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7",
+    "fee": 12500,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336"
+  },
+  "economics": {
+    "poolBps": 8800,
+    "initialMarketCapWei": "2500000000000000000000",
+    "remainderTo": "0x74d1357af7bde354a60601d84b43277c21c2849a"
+  },
+  "notes": "SwarmCore (SWARMCOR) is a fixed-supply ERC-20 built on the vendored OpenZeppelin Contracts v5.0.2 ERC20 (src/SwarmCore.sol). Its constructor takes no arguments and mints INITIAL_SUPPLY = 1,000,000,000 * 10^18 = 1000000000000000000000000000 minor units once to msg.sender, which at launch is the ProjectFactory; token.totalSupply states that amount exactly. decimals() returns 18. There is no owner, minter, pauser, blacklist, freeze, seize, burnFrom, upgrade or initializer: the supply can never grow after deployment and no privileged hand can move or freeze a holder's balance. Transfers are plain ERC-20 with no tax, burn, reflection, limit or exemption list, so the factory's transfer of the swarm share to the MerkleDistributor, distributor claims, the single-sided seed through the Uniswap v4 PoolManager and trader swaps each move exactly the amount requested. The runtime contains no DELEGATECALL, CALLCODE or SELFDESTRUCT and no linked libraries or proxies. The accepted tree contains no application contracts, so contracts is empty; nothing other than the token is deployed and no initialization calls are made. pool and economics are copied from the launch terms: the pool pairs with IMD at 0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7 on Ethereum, pool.fee 12500 is the launch policy's 1.25% fee, tickSpacing 60, and pool.initialPrice is provenance only since the deployer derives the opening price from economics.initialMarketCapWei (2,500 IMD for the whole supply) and totalSupply. 88% of the supply seeds the pool and the remainder of the requester's share goes to economics.remainderTo; the swarm's 10% is taken by the factory and is not written here."
+}
